@@ -1,58 +1,58 @@
 import LinkedList from '../linked-list/LinkedList';
-
+// 栈是只有特定操作方法的链表：后进先出
 export default class Stack {
-  constructor() {
-    this.linkedList = new LinkedList();
-  }
-
-  /**
-   * @return {boolean}
-   */
-  isEmpty() {
-    return !this.linkedList.tail;
-  }
-
-  /**
-   * @return {*}
-   */
-  peek() {
-    if (this.isEmpty()) {
-      return null;
+    constructor() {
+        this.linkedList = new LinkedList();
     }
 
-    return this.linkedList.tail.value;
-  }
+    /**
+     * @return {boolean}
+     */
+    isEmpty() {
+        return !this.linkedList.tail;
+    }
 
-  /**
-   * @param {*} value
-   */
-  push(value) {
-    this.linkedList.append(value);
-  }
+    /**
+     * @return {*}
+     */
+    peek() {
+        if (this.isEmpty()) {
+            return null;
+        }
 
-  /**
-   * @return {*}
-   */
-  pop() {
-    const removedTail = this.linkedList.deleteTail();
-    return removedTail ? removedTail.value : null;
-  }
+        return this.linkedList.tail.value;
+    }
 
-  /**
-   * @return {*[]}
-   */
-  toArray() {
-    return this.linkedList
-      .toArray()
-      .map(linkedListNode => linkedListNode.value)
-      .reverse();
-  }
+    /**
+     * @param {*} value
+     */
+    push(value) {
+        this.linkedList.append(value);
+    }
 
-  /**
-   * @param {function} [callback]
-   * @return {string}
-   */
-  toString(callback) {
-    return this.linkedList.toString(callback);
-  }
+    /**
+     * @return {*}
+     */
+    pop() {
+        const removedTail = this.linkedList.deleteTail();
+        return removedTail ? removedTail.value : null;
+    }
+
+    /**
+     * @return {*[]}
+     */
+    toArray() {
+        return this.linkedList
+            .toArray()
+            .map(linkedListNode => linkedListNode.value)
+            .reverse();
+    }
+
+    /**
+     * @param {function} [callback]
+     * @return {string}
+     */
+    toString(callback) {
+        return this.linkedList.toString(callback);
+    }
 }
